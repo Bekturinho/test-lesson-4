@@ -104,7 +104,114 @@ import Foundation
 //
 //
 //reversingFunction(text: "hello Swift!")
+/*
+ Определить протокол с нужными свойствами и методами для App Store,
+ такие как: addApp), removeApp0, apps, getAppsByTypel, getSortedApps0
+ приватный метод validateApp0.
+ AppStore - класс, подписанный на твой протокол. Тебе понадобится структура Арр с данными о приложении. К ней тоже создать протокол, в котором будут все необходимые свойства и методы для приложения, такие как: название приложения, страна, где приложение разрабатывалось, имя разработчика/кампании-разработчика, вес приложения (Double), тип приложения (enum AppType). Одно из свойств
+ должно быть опциональным.
+ Соответственно, создать АрТуре с типами приложения, что есть в реальном
+ AppStore (3-4 типа будет достаточно). Метод addApp должен добавлять в массив из приложений новое
+ приложение, если оно валидно. Для этого используй метод validateApp0.
+ Арине лидно - выводить в консоль "Rejected to add an app (app. name) to Метод validateApp0 должен возвращать Bool, если приложение валидно -
+ true, если нет - false.
+ Критерии валидности:
+ Приложение весит больше 20 и меньше 3000 МБ.
+ Страна разработчика не КНДР и Россия.
+ 
+ **/
 
+protocol AppStoreProtocol{
+    func addApp()
+    func removeApp()
+    var apps: App { get set }
+    func getAppsByTypel()
+    func getSortedApps()
+    func validateApp() -> Bool
+    
+}
+enum AppType{
+    case delivery
+    case sport
+    case videoMaking
+    case music
+}
+protocol AppProtocol{
+    var name: String { get set }
+    var country: String { get set }
+    var company: String { get set }
+    var memory: Double { get set }
+    var type: AppType { get set }
+}
+struct App: AppProtocol{
+    var name: String
+    
+    var country: String
+    
+    var company: String
+    
+    var memory: Double
+    
+    var type: AppType
+    
+   
+    
+}
 
+class AppStore: AppStoreProtocol{
+    func addApp() {
+        validateApp()
+        
+    }
+    
+    func removeApp() {
+        print("b")
+    }
+    
+    var apps: App
+    
+    func getAppsByTypel() {
+        print("b")
+    }
+    
+    func getSortedApps() {
+        print("b")
+    }
+    
+    internal func validateApp() -> Bool {
+        if apps.memory < 20{
+            print("Rejected to add an app \(apps.name) to AppStore")
+            return false
+        }
+        if apps.memory > 3000{
+            print("Rejected to add an app \(apps.name) to AppStore")
+            return false
+           
+        }
+        if apps.country == "Russia"{
+            print("Rejected to add an app \(apps.name) to AppStore")
+            return false
+        }
+        if apps.country == "KNDR"{
+            print("Rejected to add an app \(apps.name) to AppStore")
+            return false
+        }
+        else{
+            return true
+            print(apps)
+        }
+    
+    }
+    
+    
+    init(apps: App) {
+      
+        self.apps = apps
+    }
+    
+}
 
+var shazamINFO = App(name: "Shazam", country: "Russia", company: "Apple", memory: 33, type: .delivery)
 
+var shazam = AppStore(apps: shazamINFO)
+shazam.addApp()
