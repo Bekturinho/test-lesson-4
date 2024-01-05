@@ -86,9 +86,25 @@ import Foundation
 
 
 //1) Написать функцию, которая принимает строку String и возвращает ту же самую строку, но "перевернутую". Например, если я вызову функцию и в качоку ия тевир передам
-
+//
 //func reversingFunction(text: String) -> String{
-//    print(String(text.reversed()))
-//    return String(text.reversed())
+//    var text2 = Array(text).map({$0})
+//    var totalArray = [Character]()
+//    var total = ""
+//    for i in text2{
+//        totalArray.append(text2.last!)
+//        text2.removeLast()
+//    }
+//    for j in totalArray{
+//        total += String(j)
+//    }
+//    print(total)
+//    return total
 //}
-//reversingFunction(text: "Hello Swift!")
+//
+//
+//reversingFunction(text: "hello Swift!")
+
+
+
+
