@@ -84,6 +84,11 @@ import Foundation
 //var calc = Calculator()
 //calc.getLatestResult(num: 32, num2: 4, mainMethod: .plus)
 
-var a = "привет"
-var b = a.reversed()
-print(b)
+
+//1) Написать функцию, которая принимает строку String и возвращает ту же самую строку, но "перевернутую". Например, если я вызову функцию и в качоку ия тевир передам
+
+//func reversingFunction(text: String) -> String{
+//    print(String(text.reversed()))
+//    return String(text.reversed())
+//}
+//reversingFunction(text: "Hello Swift!")
