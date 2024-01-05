@@ -1,11 +1,26 @@
-//
-//  main.swift
-//  test lesson 4
-//
-//  Created by fortune cookie on 1/4/24.
-//
-
 import Foundation
 
-print("Hello, World!")
+//Создать цикл в диапазоне от 0 до 1000. Когда число в цикле достигнет 500 - вывести в консоль "Stop!" и остановить ЦИКЛ
 
+for i in 0...1000{
+    while i == 500{
+        print("\(i) Stop!")
+        break
+    }
+   
+}
+
+/**
+ Создать функцию, которая принимает три строки String и возвращает число Int. Вернуть сумму из преобразованных в строки числа. Если невозможно преобразовать строку в число (Int(text) == nil) - вывести в консоль " (непреобразованная СтрокаВЧисло) не является числом" и вернуть 0. Вызвать функцию два раза: в первый раз пусть параметры функции будут все три числа в виде строк, а во второй пусть минимум один из параметров будет невозможно превратить в число.
+
+ */
+
+
+func transform(_ text: String, text2: String, text3: String){
+    var summaryText = [[text], [text2], [text3]]
+    var totalText = summaryText.flatMap({$0})
+    for i in totalText{
+        
+    }
+}
+transform("beka", text2: "kot", text3: "Loh")
