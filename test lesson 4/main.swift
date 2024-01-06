@@ -122,9 +122,9 @@ import Foundation
  **/
 
 protocol AppStoreProtocol{
-    func addApp()
+    func addApp(totalAppsArray: [App])
     func removeApp()
-    func getAppsByTypel()
+    func getAppsByTypel(appsArray: [App], type: AppType)
     func getSortedApps()
 
    
@@ -159,71 +159,85 @@ struct App: AppProtocol{
 }
 
 class AppStore: AppStoreProtocol{
+ 
     
-    func addApp() {
-      print(apps)
+    func getAppsByTypel(appsArray: [App], type: AppType) {
+        appsArray.filter({ a in
+            if a.type == type{
+                print("App \(a.name) is \(a.type) type")
+                return true
+                
+            }
+            else{
+                return false
+            }
+    
+        })
+        
+      
+    }
+    var totalArray: [App?]
+    
+   
+    
+    
+    func addApp(totalAppsArray: [App]) {
+        for i in totalAppsArray{
+            validateApp()
+        }
     
     }
     
     func removeApp() {
         print("b")
     }
-    
+
     private var apps: App
-    
-    func getAppsByTypel() {
-        print("b")
-    }
+   
     
     func getSortedApps() {
         print("b")
     }
     
-    private func validateApp() -> Bool {
+    private func validateApp() -> Bool{
     
         
-//        if i.memory < 20{
-//            print("Rejected to add an app \(i.name) to AppStore")
-//            return boolian
-//        }
-//        if i.memory > 3000{
-//            print("Rejected to add an app \(i.name) to AppStore")
-//            return boolian
-//            
-//        }
-//        if i.country == "Russia"{
-//            return boolian
-//        }
-//        if i.country == "KNDR"{
-//            print("Rejected to add an app \(i.name) to AppStore")
-//            return boolian
-//        }
-//        else{
-//            return true
-//
-//        }
-        
-        
-//        
-//    
-//        print(boolian)
-//        return boolian
+        if apps.memory < 20{
+            print("Rejected to add an app \(apps.name) to AppStore")
+            return false
+        }
+        if apps.memory > 3000{
+            print("Rejected to add an app \(apps.name) to AppStore")
+            return false
+            
+        }
+        if apps.country == "Russia"{
+            return false
+            
+        }
+        if apps.country == "KNDR"{
+            print("Rejected to add an app \(apps.name) to AppStore")
+            return false
+        }
+        else{
+            totalArray.append(apps)
+            return true
+print(totalArray)
+        }
+    
         return true
     }
-    init(apps: [App] = [App]()) {
+    init(totalArray: [App?], apps: App) {
+        self.totalArray = totalArray
         self.apps = apps
     }
 }
-var shazamINFO = App(name: "Shazam", country: "Ukraine", company: "Apple", memory: 33, type: .delivery)
-var shazamINFO2 = App(name: "Shazam", country: "Ukraine", company: "Apple", memory: 33, type: .delivery)
+var shazamINFO = App(name: "Shazam", country: "KNDR", company: "Apple", memory: 33, type: .delivery)
+var shazamINFO2 = App(name: "Shazam", country: "USA", company: "Apple", memory: 33, type: .delivery)
 var shazamINFO3 = App(name: "Shazam", country: "Ukraine", company: "Apple", memory: 33, type: .delivery)
 
-var shazam = AppStore()
+var shazam = AppStore(totalArray: [], apps: shazamINFO)
 
-shazam.addApp()
-//var instagramINFO = App(name: "Insatagram", country: "USA", company: "Apple", memory: 33, type: .delivery)
-//
-//var instagram = AppStore(apps: instagramINFO)
-//instagram.addApp()
-//print(instagram.apps)
+shazam.addApp(totalAppsArray: [shazamINFO3])
+
 
