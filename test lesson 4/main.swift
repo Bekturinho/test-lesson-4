@@ -124,10 +124,10 @@ import Foundation
 protocol AppStoreProtocol{
     func addApp()
     func removeApp()
-    var apps: App { get set }
     func getAppsByTypel()
     func getSortedApps()
-    func validateApp() -> Bool
+
+   
     
 }
 enum AppType{
@@ -159,16 +159,17 @@ struct App: AppProtocol{
 }
 
 class AppStore: AppStoreProtocol{
+    
     func addApp() {
-        validateApp()
-        
+      print(apps)
+    
     }
     
     func removeApp() {
         print("b")
     }
     
-    var apps: App
+    private var apps: App
     
     func getAppsByTypel() {
         print("b")
@@ -178,40 +179,51 @@ class AppStore: AppStoreProtocol{
         print("b")
     }
     
-    internal func validateApp() -> Bool {
-        if apps.memory < 20{
-            print("Rejected to add an app \(apps.name) to AppStore")
-            return false
-        }
-        if apps.memory > 3000{
-            print("Rejected to add an app \(apps.name) to AppStore")
-            return false
-           
-        }
-        if apps.country == "Russia"{
-            print("Rejected to add an app \(apps.name) to AppStore")
-            return false
-        }
-        if apps.country == "KNDR"{
-            print("Rejected to add an app \(apps.name) to AppStore")
-            return false
-        }
-        else{
-            return true
-            print(apps)
-        }
+    private func validateApp() -> Bool {
     
+        
+//        if i.memory < 20{
+//            print("Rejected to add an app \(i.name) to AppStore")
+//            return boolian
+//        }
+//        if i.memory > 3000{
+//            print("Rejected to add an app \(i.name) to AppStore")
+//            return boolian
+//            
+//        }
+//        if i.country == "Russia"{
+//            return boolian
+//        }
+//        if i.country == "KNDR"{
+//            print("Rejected to add an app \(i.name) to AppStore")
+//            return boolian
+//        }
+//        else{
+//            return true
+//
+//        }
+        
+        
+//        
+//    
+//        print(boolian)
+//        return boolian
+        return true
     }
-    
-    
-    init(apps: App) {
-      
+    init(apps: [App] = [App]()) {
         self.apps = apps
     }
-    
 }
+var shazamINFO = App(name: "Shazam", country: "Ukraine", company: "Apple", memory: 33, type: .delivery)
+var shazamINFO2 = App(name: "Shazam", country: "Ukraine", company: "Apple", memory: 33, type: .delivery)
+var shazamINFO3 = App(name: "Shazam", country: "Ukraine", company: "Apple", memory: 33, type: .delivery)
 
-var shazamINFO = App(name: "Shazam", country: "Russia", company: "Apple", memory: 33, type: .delivery)
+var shazam = AppStore()
 
-var shazam = AppStore(apps: shazamINFO)
 shazam.addApp()
+//var instagramINFO = App(name: "Insatagram", country: "USA", company: "Apple", memory: 33, type: .delivery)
+//
+//var instagram = AppStore(apps: instagramINFO)
+//instagram.addApp()
+//print(instagram.apps)
+
